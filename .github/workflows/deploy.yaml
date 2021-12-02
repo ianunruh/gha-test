@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.GH_BOT_TOKEN }}
 
       - name: Bump file and commit
         run: |
