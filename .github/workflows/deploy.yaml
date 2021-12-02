@@ -1,0 +1,21 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+    - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Bump file and commit
+        run: |
+          date > test.txt
+
+          git commit -av -m "Bump test version"
+          git push
