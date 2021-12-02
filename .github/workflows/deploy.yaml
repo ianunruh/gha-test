@@ -12,8 +12,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-        with:
-          token: ${{ secrets.GH_BOT_TOKEN }}
 
       - name: Bump file and commit
         run: |
@@ -21,6 +19,8 @@ jobs:
 
           git config --global user.email "github-actions@ianunruh.com"
           git config --global user.name "GitHub Actions"
+
+          git remote set-url origin https://ianunruh:${{ secrets.GH_BOT_TOKEN }}@github.com/ianunruh/gha-test.git
 
           git commit -av -m "Bump test version"
           git push
