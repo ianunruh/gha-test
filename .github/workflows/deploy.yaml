@@ -6,7 +6,7 @@ on:
     - main
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -16,6 +16,9 @@ jobs:
       - name: Bump file and commit
         run: |
           date > test.txt
+
+          git config --global user.email "github-actions@ianunruh.com"
+          git config --global user.name "GitHub Actions"
 
           git commit -av -m "Bump test version"
           git push
